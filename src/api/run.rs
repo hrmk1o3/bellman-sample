@@ -1,4 +1,5 @@
 use std::marker::PhantomData;
+use std::path::Path;
 
 use anyhow::Result;
 use franklin_crypto::bellman::groth16::{
@@ -38,6 +39,11 @@ pub fn run(circuit_input: CircuitInput) -> Result<()> {
   assert!(success, "verification error");
 
   Ok(())
+}
+
+pub fn run_with_file(input_path: &Path) -> Result<()> {
+  let circuit_input = CircuitInput::from_path(input_path)?;
+  run(circuit_input)
 }
 
 pub fn decode_public_wires<E: Engine>(bytes: &[u8]) -> Vec<E::Fr> {

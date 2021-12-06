@@ -1,3 +1,5 @@
+use bellman_sample::api::run::run;
+
 fn main() {
-    println!("Hello, world!");
+  run().unwrap();
 }

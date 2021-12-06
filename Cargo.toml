@@ -1,8 +1,7 @@
 [package]
-name = "verkle-tree-copy"
+name = "bellman-sample"
 version = "0.1.0"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
+franklin_crypto = { package = "franklin-crypto", git = "https://github.com/matter-labs/franklin-crypto.git", branch = "zinc", version = "0.0.5" }

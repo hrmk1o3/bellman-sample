@@ -11,17 +11,20 @@ use franklin_crypto::circuit::multipack::bytes_to_bits_le;
 
 use crate::circuit::SampleCircuit;
 
-pub fn run() -> Result<()> {
+use super::input::CircuitInput;
+
+pub fn run(circuit_input: CircuitInput) -> Result<()> {
   // setup
+  let dummy_input = CircuitInput::default();
   let circuit = SampleCircuit {
-    inputs: [None, None], // dummy inputs
+    inputs: dummy_input.inputs,
     _e: PhantomData::<Bn256>,
   };
   let parameters = generate_random_parameters::<Bn256, _, _>(circuit, &mut rand::thread_rng())?;
 
   // prove
   let circuit = SampleCircuit {
-    inputs: [Some(true), Some(true)],
+    inputs: circuit_input.inputs,
     _e: PhantomData::<Bn256>,
   };
   let public_wires_bytes = circuit.get_public_wires()?;

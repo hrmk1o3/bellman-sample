@@ -1,5 +1,8 @@
-use bellman_sample::api::run::run;
+use bellman_sample::api::{input::CircuitInput, run::run};
 
 fn main() {
-  run().unwrap();
+  let circuit_input = CircuitInput {
+    inputs: [Some(true), Some(true)],
+  };
+  run(circuit_input).unwrap();
 }
